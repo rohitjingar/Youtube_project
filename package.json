@@ -1,0 +1,15 @@
+{
+  "name": "youtube-project",
+  "version": "1.0.0",
+  "description": "this is complete backend project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "JS",
+    "Backend"
+  ],
+  "author": "Rohit Jingar",
+  "license": "ISC"
+}
