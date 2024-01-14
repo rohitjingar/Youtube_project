@@ -20,4 +20,12 @@ app.use(express.urlencoded({
 // for the static data like images to store in public
 app.use(express.static("public"))
 app.use(cookieParser())
+
+
+// routes import
+import userRouter from './routes/user.routes.js'
+
+// routes declaration
+app.use("/api/v1/users", userRouter)
+
 export default app;
