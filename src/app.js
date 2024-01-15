@@ -19,6 +19,7 @@ app.use(express.urlencoded({
 }))
 // for the static data like images to store in public
 app.use(express.static("public"))
+// access the cookie to app or req
 app.use(cookieParser())
 
 
