@@ -19,7 +19,11 @@ const publishAVideo = asyncHandler(async (req, res) => {
     if(!title && !description){
          throw new ApiError(400, "title or description is required")
     }
+    const userId = req.user._id;
 
+    if(!isValidObjectId(userId)) {
+        throw new ApiError(400, "Invalid user id");
+    }
     let videoFileLocalPath;
     let thumbnailLocalPath;
 
@@ -54,15 +58,15 @@ const publishAVideo = asyncHandler(async (req, res) => {
           title,
           description,
           time: videoFile.duration,
-          owner: req.user?._id
+          owner: userId
     })
 
-    const createdVideo = await Video.findById(video._id)
-    if(!createdVideo){
+    
+    if(!video){
         throw new ApiError(500, "Something went wrong while creating the video")
     }
 
-    return res.status(201).json(new ApiResponse(200,createdVideo,"Video created Successfully"))
+    return res.status(200).json(new ApiResponse(200,video,"Video created Successfully"))
 })
 
 const getVideoById = asyncHandler(async (req, res) => {
