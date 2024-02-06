@@ -42,7 +42,7 @@ const getUserTweets = asyncHandler(async (req, res) => {
     }
     const userTweet = await Tweet.find({owner: userId})
     if (userTweet.length === 0) {
-        throw new ApiError(400, "No tweets found for this user");
+        return res.status(200).json(new ApiResponse(200, {}, "No tweet found"))
     }    
     return res.status(200).json(new ApiResponse(200, userTweet, "Tweet fetched successfully"))
 })
